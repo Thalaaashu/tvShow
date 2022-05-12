@@ -1,0 +1,46 @@
+<% layout('layouts/boilerplate.ejs')%>
+<div class="row">
+  <div class="col-lg-3">
+<form action="/tvshows" method="POST" novalidate class="validated-form" >
+  <div class="input-group">
+  <input type="text" name="search" class="form-control" placeholder="search tv show" required>
+  <span class="input-group-append">
+  <button class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+    </svg></button>
+    </span>
+    </div>
+</form>
+</div>
+</div>
+<br>
+  <div class="row d-flex align-items-stretch justify-content-between">
+    <div class="col-md-5">
+    <div class="card">
+  <img class="card-img-top top" src="<%=tv.original%>" alt="Cd image cap">
+    </div>
+    </div>
+    <div class="col-md-7 bg-warning card border-6  border-light">
+      <a class="btn btn-success border border-light w-25" href="/tvshows/<%=tv._id%>/reviews">Rate this TV show</a>
+        <div class="card-body">
+          <h5 class="card-title"><%=tv.name%></h5>
+          <% if(tv.rating){ %>
+            <div><b>Rating-</b><img src="https://img.icons8.com/office/16/000000/filled-star--v1.png"/> <%=tv.rating%> </div> 
+            <% } %> 
+            <% if(tv.genres.length) {%> 
+            <b>Genre-</b>
+          <% for(genre of tv.genres){ %> 
+          <span class="card-text text-muted" ><%=genre%> </span>
+          <% } %> 
+          <% } %> 
+          </div>
+          <a  class="text-dark font-weight-bold" href="/tvshows/<%=tv._id%>/reviews">Checkout people's Reviews</a>
+    </div>
+    </div>
+     <script>  
+     const cardbody=document.querySelector('.card-body');     
+     let span=document.createElement('span');
+       span.innerHTML="<%-tv.summary%>"
+       span.classList.add('card-text')
+       cardbody.appendChild(span);
+     </script>

@@ -1,0 +1,39 @@
+<% layout('layouts/boilerplate.ejs')%>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+    <form action="/tvshows" method="POST" novalidate class="validated-form" >
+        <div class="input-group">
+        <input type="text" name="search" class="form-control" placeholder="search tv show" required>
+        <span class="input-group-append">
+        <button class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+          </svg></button>
+          </span>
+          </div>
+    </form>
+    </div>
+    </div>
+    <br>
+    <h3 class="text-light">Shows</h3>
+    <% for(let i=parseInt(id)*20;i<(parseInt(id)+1)*20;i++) {%> 
+        <form id="hover"action="/tvshows" method="POST" class="border border-light d-inline-block pan">
+            <input type="hidden" value="<%=data[i].name%>" name="search">
+            <input class="tan" type="image" src="<%=data[i].image.medium%>">
+            <div class="text-light"><img src="https://img.icons8.com/office/16/000000/filled-star--v1.png" alt=""><%=data[i].rating.average%></div>
+        </form>
+    <% } %> 
+    </ul>
+<div class="row">
+    <div class="col">
+        <br>
+<ul class="pagination">
+    <span class="pages" >Pages</span>
+<% for(let i=0;i<12;i++) {%>
+    <li><a href="/tvshows/page/<%=i%>" class="<%if(i==parseInt(id)){%>active<%}%>"><%=i%></a></li>
+   <% } %> 
+   </ul>
+   </div>
+   </div>
+</div>
+

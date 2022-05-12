@@ -1,0 +1,20 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-info sticky-top pt-0 pb-0 ">
+    <h1 class="navbar-brand display-1 text-light"><img src="https://img.icons8.com/material-rounded/24/000000/retro-tv.png"/>  Tv Shows</h1>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active text-light" href="/tvshows/page/0">Home <span class="sr-only">(current)</span></a>
+        </div>
+        <div class="navbar-nav ml-auto">
+        <% if(!user) {%> 
+        <a class="nav-item nav-link text-light ms-auto" href="/register">Register</a>
+        <a class="nav-item nav-link text-light ms-auto " href="/login">Login</a>
+        <% }else{ %> 
+          <span class="nav-item nav-link text-black" ><img src="https://img.icons8.com/material-sharp/24/000000/user-male-circle.png"/> <%=user.username %> </span>
+          <a class="nav-item nav-link text-light ms-auto " href="/logout">Logout</a>
+        <% } %> 
+      </div>
+    </div>
+  </nav>
