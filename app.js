@@ -83,7 +83,10 @@ app.use(
   );
 app.use(mongoSanitize());
 
-
+app.get('/',async(req,res,next)=>{
+    const {data}=await axios.get('https://api.tvmaze.com/shows',{headers:{Accept:'application/json'}});
+    res.render('welcome.ejs',{data});
+})
 app.use('/tvshows',tvrouter);
 app.use('/tvshows',reviewrouter);
 app.use('/',userrouter);
